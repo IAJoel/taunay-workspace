@@ -1,10 +1,86 @@
-# Claude Code OS — Kit Ratos de IA
+# Taunay Advogados — Claude Code OS
 
-Este repositório é o kit de boas-vindas do curso Claude Code OS.
+## O que é esse workspace
 
-Se você acabou de clonar esse repositório:
-1. Rode `/setup` pra configurar o sistema pro seu negócio (uns 5 minutos)
-2. Depois rode `/mapear` pra criar skills personalizadas pro que você faz no dia a dia
+Workspace operacional de Joel Costa para o escritório Taunay Advogados. Centraliza automações jurídicas, produção de peças processuais, relatórios Visual Law, conteúdo para redes sociais e prospecção de clientes.
+
+**Estrutura de pastas:**
+- `_contexto/` — memória persistente do negócio (empresa, preferências, estratégia)
+- `clientes/` — pasta por cliente com briefing e histórico
+- `pecas/` — peças processuais organizadas por tipo (contestações, recursos, memoriais)
+- `automacoes/` — scripts RPA e fluxos automatizados
+- `conteudo/` — conteúdo para Instagram e redes sociais
+- `relatorios/` — relatórios gerenciais e Visual Law
+- `dados/` — CSVs, planilhas e arquivos de entrada
+- `marca/` — logo, design-guide e identidade visual
+- `templates/skills/` — templates de skills prontos pra personalizar com /mapear
+- `templates/ferramentas/catalogo.md` — APIs e ferramentas disponíveis pra usar em skills
+
+## Sobre o negócio
+
+L.A. Taunay Advogados Associados, Rio de Janeiro. Atuação jurídica sênior em Processo Civil, Direito do Consumidor e Direito de Energia Elétrica (ANEEL Resolução 1.000), com foco na defesa de concessionárias de serviços públicos, principalmente a Light S.A. Combina expertise jurídica com desenvolvimento de software para automação de litígio de alto volume.
+
+## O que mais fazemos aqui
+
+- Automação de processos jurídicos repetitivos (RPA) com Python e Claude
+- Elaboração de peças processuais de alta performance
+- Relatórios gerenciais com Visual Law
+- Extração e consolidação de dados processuais
+- Produção de conteúdo e prospecção via Instagram e redes sociais
+
+## Clientes e contexto
+
+Grandes clientes corporativos externos (concessionárias de serviços públicos) + uso interno da equipe. Equipe: Joel Costa, Leonardo Ferreira Loffler, Luciano Bogado.
+
+## Tom de voz
+
+Profissional, técnico, persuasivo. Precisão de mestre em Direito Processual Civil. Sem "robusta", "crucial" ou travessão "—". Sem teses ou precedentes alucinados. Argumentação baseada em lógica jurídica e semiótica. Regras completas em `_contexto/preferencias.md`.
+
+## Ferramentas conectadas
+
+- Autojur (gestão processual)
+- Python: Pandas, Selenium, Playwright, PyAutoGUI, Pytesseract
+- Gemini, ChatGPT
+- *(MCPs instalados aparecerão aqui conforme forem adicionados)*
+
+---
+
+## Comandos disponíveis
+
+Todos os comandos ficam em `.claude/commands/`:
+
+- `/setup` — Wizard de onboarding que entrevista o usuário, detecta o perfil (freelancer, agência, empresa, solopreneur, criador, profissional), preenche os arquivos de contexto, cria a estrutura de pastas e recomenda MCPs conforme as ferramentas mencionadas
+- `/iniciar` — Carrega o contexto do negócio no início de cada sessão e pergunta o que fazer
+- `/mapear` — Descobre processos repetitivos do usuário e cria skills personalizadas ou adapta templates existentes
+- `/novo-projeto` — Cria subpastas de projeto (clientes, produtos, séries de conteúdo) com CLAUDE.md próprio
+- `/atualizar` — Varre o estado atual do projeto vs. o contexto documentado e propõe atualizações nos arquivos de memória
+- `/syncar` — Faz commit e push das mudanças pro GitHub (também configurado como hook automático ao parar a sessão)
+
+Skills pré-instaladas ficam em `.claude/skills/` ou `~/.claude/skills/` (globais). Templates prontos para adaptação estão em `templates/skills/`.
+
+---
+
+## Arquitetura
+
+Este projeto não tem build, testes ou código compilado — é um sistema de templates em markdown que ensina o Claude a trabalhar com o contexto específico de um negócio.
+
+**Fluxo central:**
+1. `/setup` lê o perfil do usuário e escreve os arquivos de contexto (`_contexto/`) e a estrutura de pastas
+2. Em cada sessão, o Claude lê `_contexto/` automaticamente e usa como base para todas as respostas
+3. Skills em `.claude/skills/` ou `.claude/commands/` têm prioridade sobre comportamento genérico
+
+**Diretórios principais:**
+- `_contexto/` — Memória persistente do negócio (`empresa.md`, `preferencias.md`, `estrategia.md`)
+- `.claude/commands/` — Os 6 comandos principais do sistema
+- `.claude/skills/` — Skills específicas desse workspace (criadas pelo usuário via `/mapear`)
+- `templates/` — Base para criar novas skills e perfis; contém `templates/skills/`, `templates/perfis/`, e `templates/ferramentas/catalogo.md`
+- `marca/` — Guia de identidade visual consultado por todas as skills visuais (carrossel, proposta, slide)
+- `dados/` — Drop zone para arquivos CSV/XLSX/PDF usados com `/analisar-dados`
+
+**Dependências de runtime:**
+- Git + GitHub (para `/syncar`)
+- Node.js / npx (para skills de renderização visual como `/carrossel`)
+- MCPs opcionais instalados durante o `/setup` conforme as ferramentas do usuário (Notion, Google Drive, Gmail, etc.)
 
 ---
 
