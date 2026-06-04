@@ -1,0 +1,639 @@
+[
+  {
+    "row_excel": 2,
+    "cnj": "0006439-54.2019.8.19.0067",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Cumprimento de obrigação de pagar",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 3,
+    "cnj": "0843075-18.2023.8.19.0205",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de depósito voluntário de condenação",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 4,
+    "cnj": "0030192-29.2010.8.19.0205",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Cumprimento de obrigação de fazer",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 5,
+    "cnj": "0000988-84.2022.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de telas de obrigação de fazer",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 9,
+    "cnj": "0827857-44.2023.8.19.0206",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Cumprimento de obrigação de pagar e de fazer.",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 10,
+    "cnj": "0019472-55.2019.8.19.0021",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Cumprimento de obrigação de pagar e de fazer.",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 14,
+    "cnj": "0019472-55.2019.8.19.0021",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Cumprimento de obrigação de pagar e de fazer.",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 15,
+    "cnj": "0009567-94.2017.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Cumprimento de obrigação de fazer.",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 16,
+    "cnj": "0827857-44.2023.8.19.0206",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Cumprimento de obrigação de pagar e de fazer.",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 18,
+    "cnj": "0110915-50.2019.8.19.0001",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Informar cumprimento de obrigação e baixa de faturas",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 19,
+    "cnj": "0007245-04.2017.8.19.0021",
+    "ged": "PETIÇÃO INFORMANDO BAIXA DE CONTAS",
+    "teor": "Informando baixa das faturas em aberto",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 20,
+    "cnj": "0002499-13.2021.8.19.0067",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 21,
+    "cnj": "0042743-59.2020.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais.",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 25,
+    "cnj": "0049692-65.2021.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de guia de depósito voluntário de acordo",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 26,
+    "cnj": "0001768-31.2017.8.19.0043",
+    "ged": "PETIÇÃO INFORMANDO BAIXA DE CONTAS",
+    "teor": "Informando baixa das faturas em aberto",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 27,
+    "cnj": "0013347-71.2019.8.19.0021",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Cumprimento de obrigação de fazer e de pagar",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 30,
+    "cnj": "0804726-09.2024.8.19.0205",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de honorários sucumbenciais",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 34,
+    "cnj": "0810178-56.2023.8.19.0036",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de telas comprobatórias de obrigação de fazer",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 36,
+    "cnj": "0007511-15.2022.8.19.0021",
+    "ged": "PETIÇÃO INFORMANDO BAIXA DE CONTAS",
+    "teor": "Informando baixa das faturas em aberto",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 37,
+    "cnj": "0867955-36.2025.8.19.0001",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Cumprimento de obrigação de pagar.",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 38,
+    "cnj": "0851351-37.2025.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 39,
+    "cnj": "0800240-60.2022.8.19.0072",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 40,
+    "cnj": "0025475-94.2017.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Informar cumprimento de obrigação e baixa de faturas",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 41,
+    "cnj": "0835510-07.2022.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 42,
+    "cnj": "0000222-95.2021.8.19.0205",
+    "ged": "COMPROVAÇÃO DE RECOLHIMENTO DE CUSTAS",
+    "teor": "Informando recolhimento de custas da impugnação à penhora.",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 43,
+    "cnj": "0828981-69.2022.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 44,
+    "cnj": "0801225-10.2023.8.19.0067",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 46,
+    "cnj": "0804555-18.2025.8.19.0205",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 47,
+    "cnj": "0832628-72.2022.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 48,
+    "cnj": "0010462-80.2020.8.19.0205",
+    "ged": "PETIÇÃO INFORMANDO BAIXA DE CONTAS",
+    "teor": "Informando baixa das faturas em aberto",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 49,
+    "cnj": "0963764-53.2025.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 50,
+    "cnj": "0051149-35.2021.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais.",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 51,
+    "cnj": "0835061-11.2024.8.19.0205",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de depósito voluntário",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 52,
+    "cnj": "0847885-69.2024.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 53,
+    "cnj": "0010216-59.2017.8.19.0021",
+    "ged": "PETIÇÃO INFORMANDO BAIXA DE CONTAS",
+    "teor": "Informar cumprimento de obrigação e baixa de faturas",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 56,
+    "cnj": "0803027-50.2024.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – QUESITOS",
+    "teor": "Apresentação de quesitos periciais",
+    "evento": "QUESITOS / ASSISTENTE - 15U"
+  },
+  {
+    "row_excel": 65,
+    "cnj": "0822740-11.2024.8.19.0021",
+    "ged": "APELAÇÃO CÍVEL",
+    "teor": "Recurso de apelação.",
+    "evento": "ANÁLISE / ENVIAR PEDIDO DE DISPENSA"
+  },
+  {
+    "row_excel": 68,
+    "cnj": "0832445-04.2022.8.19.0021",
+    "ged": "EMBARGOS À EXECUÇÃO",
+    "teor": "Impugnação ao cumprimento de sentença",
+    "evento": "IMPUGNAÇÃO AO CUMPRIMENTO DE SENTENÇA"
+  },
+  {
+    "row_excel": 69,
+    "cnj": "3018152-66.2025.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 10U"
+  },
+  {
+    "row_excel": 70,
+    "cnj": "0004754-75.2020.8.19.0067",
+    "ged": "COMPROVAÇÃO DE RECOLHIMENTO DE CUSTAS",
+    "teor": "Recolhimento de custas para mandado de pagamento",
+    "evento": "MANIFESTAÇÃO - CPC73 - 05C"
+  },
+  {
+    "row_excel": 74,
+    "cnj": "0021611-35.2022.8.19.0001",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Juntada de cópia de agravo de instrumento",
+    "evento": "PETIÇÃO 1018"
+  },
+  {
+    "row_excel": 77,
+    "cnj": "0840459-06.2024.8.19.0021",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Manifestação sobre provas",
+    "evento": "PROVAS - 10U"
+  },
+  {
+    "row_excel": 78,
+    "cnj": "0807822-13.2025.8.19.0006",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Cumprimento de tutela de urgência (liminar).",
+    "evento": "CUMPRIMENTO LIMINAR"
+  },
+  {
+    "row_excel": 80,
+    "cnj": "3007312-97.2026.8.19.0021",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação.",
+    "evento": "CONTESTAÇÃO LIGHT"
+  },
+  {
+    "row_excel": 81,
+    "cnj": "0800164-50.2026.8.19.0022",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação.",
+    "evento": "CONTESTAÇÃO LIGHT"
+  },
+  {
+    "row_excel": 82,
+    "cnj": "3023543-65.2026.8.19.0001",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação.",
+    "evento": "CONTESTAÇÃO LIGHT"
+  },
+  {
+    "row_excel": 83,
+    "cnj": "0823603-30.2025.8.19.0021",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Manifestação sobre provas",
+    "evento": "PROVAS - 10U"
+  },
+  {
+    "row_excel": 84,
+    "cnj": "0807187-43.2025.8.19.0067",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 15U"
+  },
+  {
+    "row_excel": 85,
+    "cnj": "0833975-05.2024.8.19.0205",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Manifestação sobre provas",
+    "evento": "PROVAS - 15U"
+  },
+  {
+    "row_excel": 87,
+    "cnj": "0835763-24.2024.8.19.0021",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Manifestação sobre provas",
+    "evento": "PROVAS - 15U"
+  },
+  {
+    "row_excel": 88,
+    "cnj": "0803804-57.2025.8.19.0067",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 15U"
+  },
+  {
+    "row_excel": 90,
+    "cnj": "0801379-98.2025.8.19.0021",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação.",
+    "evento": "CONTESTAÇÃO LIGHT"
+  },
+  {
+    "row_excel": 94,
+    "cnj": "0901767-69.2025.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 96,
+    "cnj": "0806800-51.2024.8.19.0006",
+    "ged": "APELAÇÃO CÍVEL",
+    "teor": "Recurso de Apelação",
+    "evento": "APELAÇÃO CÍVEL"
+  },
+  {
+    "row_excel": 97,
+    "cnj": "3044433-25.2026.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 98,
+    "cnj": "0822298-11.2025.8.19.0021",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 99,
+    "cnj": "0800870-29.2025.8.19.0067",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Manifestação sobre provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 100,
+    "cnj": "0165362-46.2023.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 101,
+    "cnj": "0983438-17.2025.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 102,
+    "cnj": "0809332-46.2025.8.19.0205",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 103,
+    "cnj": "0825895-23.2022.8.19.0205",
+    "ged": "ALEGAÇÕES FINAIS",
+    "teor": "Alegações finais.",
+    "evento": "ALEGAÇÕES FINAIS - CPC73"
+  },
+  {
+    "row_excel": 104,
+    "cnj": "0808170-83.2025.8.19.0021",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 105,
+    "cnj": "0924412-88.2025.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 106,
+    "cnj": "0961519-69.2025.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 109,
+    "cnj": "0121317-20.2024.8.19.0001",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Justificação de provas",
+    "evento": "PROVAS - 05U"
+  },
+  {
+    "row_excel": 112,
+    "cnj": "0004719-18.2020.8.19.0067",
+    "ged": "ALEGAÇÕES FINAIS",
+    "teor": "Alegações finais.",
+    "evento": "ALEGAÇÕES FINAIS - NCPC"
+  },
+  {
+    "row_excel": 115,
+    "cnj": "0024267-66.2021.8.19.0205",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Manifestação sobre laudo pericial e esclarecimentos.",
+    "evento": "SOBRE PET DO PERITO"
+  },
+  {
+    "row_excel": 119,
+    "cnj": "0075545-05.2022.8.19.0001",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Impugnação à realização de prova pericial indireta.",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 122,
+    "cnj": "0809400-23.2022.8.19.0036",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Anuência com extinção da demanda.",
+    "evento": "MANIFESTAÇÃO - 24H"
+  },
+  {
+    "row_excel": 123,
+    "cnj": "0821821-56.2023.8.19.0021",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Denúncia de descumprimento de tutela de urgência.",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 126,
+    "cnj": "0049692-65.2021.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de guia de depósito voluntário de acordo",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 163,
+    "cnj": "0862172-37.2024.8.19.0021",
+    "ged": "APELAÇÃO CÍVEL",
+    "teor": "Recurso de Apelação",
+    "evento": "APELAÇÃO CÍVEL"
+  },
+  {
+    "row_excel": 169,
+    "cnj": "0945940-18.2024.8.19.0001",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Habilitação de advogado e publicações exclusivas.",
+    "evento": "MANIFESTAÇÃO - 24H"
+  },
+  {
+    "row_excel": 170,
+    "cnj": "0806263-32.2025.8.19.0067",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Manifestação pugnando pelo julgamento antecipado.",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 173,
+    "cnj": "0822740-11.2024.8.19.0021",
+    "ged": "APELAÇÃO CÍVEL",
+    "teor": "Recurso de apelação.",
+    "evento": "APELAÇÃO CÍVEL"
+  },
+  {
+    "row_excel": 186,
+    "cnj": "0831719-22.2024.8.19.0001",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de apelação.",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 187,
+    "cnj": "0819137-24.2023.8.19.0001",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de apelação.",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 188,
+    "cnj": "0828742-61.2023.8.19.0205",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de apelação.",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 191,
+    "cnj": "0013347-71.2019.8.19.0021",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Cumprimento de obrigação de fazer e de pagar",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 193,
+    "cnj": "0801564-69.2025.8.19.0205",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de apelação",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 194,
+    "cnj": "0813444-58.2025.8.19.0205",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de apelação.",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 195,
+    "cnj": "0804726-09.2024.8.19.0205",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de honorários sucumbenciais",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 196,
+    "cnj": "0849227-52.2023.8.19.0021",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões aos embargos de declaração.",
+    "evento": "CONTRARRAZÕES EM ED"
+  },
+  {
+    "row_excel": 197,
+    "cnj": "0807886-42.2024.8.19.0205",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de apelação",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 198,
+    "cnj": "0807821-18.2022.8.19.0205",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de apelação",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 199,
+    "cnj": "0867955-36.2025.8.19.0001",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Cumprimento de obrigação de pagar.",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 200,
+    "cnj": "0010441-40.2021.8.19.0021",
+    "ged": "PETIÇÃO INFORMANDO BAIXA DE CONTAS",
+    "teor": "Informar cumprimento de obrigação e baixa de faturas",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 203,
+    "cnj": "3007312-97.2026.8.19.0021",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação.",
+    "evento": "CUMPRIMENTO LIMINAR"
+  },
+  {
+    "row_excel": 204,
+    "cnj": "3007312-97.2026.8.19.0021",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação.",
+    "evento": "PETIÇÃO 1018"
+  },
+  {
+    "row_excel": 205,
+    "cnj": "3007312-97.2026.8.19.0021",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação.",
+    "evento": "AGRAVO DE INSTRUMENTO"
+  },
+  {
+    "row_excel": 206,
+    "cnj": "0835061-11.2024.8.19.0205",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de depósito voluntário",
+    "evento": "PETICIONAR PAGAMENTO"
+  }
+]

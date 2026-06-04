@@ -1,0 +1,555 @@
+"""
+Dashboard de Prazos Pendentes — Taunay Advogados
+Detecta automaticamente o xlsx mais recente em ccos-joel/dados/
+e usa a data de hoje como referência de atraso.
+
+Executar de qualquer diretório:
+    python gerar_dashboard.py
+"""
+import openpyxl
+import json
+import os
+import glob
+from datetime import date, datetime
+from collections import defaultdict
+
+# ── Caminhos (resolvidos relativos a este script) ────────────
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DADOS_DIR  = SCRIPT_DIR
+OUTPUT     = os.path.join(SCRIPT_DIR, "dashboard_prazos.html")
+HOJE       = date.today()
+
+PRECLUSIVOS_MAP = {
+    "CONTESTAÇÃO LIGHT": {
+        "label": "Contestação",
+        "base": "Art. 335 CPC",
+        "impacto": "Revelia — fatos do autor presumidos verdadeiros",
+    },
+    "CONTRARRAZÕES EM APELAÇÃO": {
+        "label": "Contrarrazões em Apelação",
+        "base": "Art. 1.010 CPC",
+        "impacto": "Trânsito em julgado sem defesa do recurso adverso",
+    },
+    "CONTRARRAZÕES EM ED": {
+        "label": "Contrarrazões em ED",
+        "base": "Art. 1.023 CPC",
+        "impacto": "Trânsito em julgado dos embargos sem manifestação",
+    },
+    "IMPUGNAÇÃO AO CUMPRIMENTO DE SENTENÇA": {
+        "label": "Impugnação ao Cumprimento de Sentença",
+        "base": "Art. 525 CPC",
+        "impacto": "Penhora e execução definitiva sem defesa processual",
+    },
+    "IMPUGNAR LAUDO / JUNTAR PARECER - NCPC": {
+        "label": "Impugnar Laudo / Juntar Parecer",
+        "base": "Art. 477 CPC",
+        "impacto": "Preclusão — laudo aceito sem contestação técnica",
+    },
+    "MEMORIAIS DE 2ª INSTÂNCIA": {
+        "label": "Memoriais de 2ª Instância",
+        "base": "Art. 364 CPC",
+        "impacto": "Infração das normas processuais — ausência de memorial final",
+    },
+    "AGRAVO DE INSTRUMENTO": {
+        "label": "Agravo de Instrumento",
+        "base": "Art. 1.015 CPC",
+        "impacto": "Preclusão do recurso — decisão interlocutória imutável",
+    },
+    "EMBARGOS DE DECLARAÇÃO - NCPC": {
+        "label": "Embargos de Declaração",
+        "base": "Art. 1.022 CPC",
+        "impacto": "Preclusão — omissão/obscuridade/contradição não sanada",
+    },
+    "IMPUG ART. 854 NCPC": {
+        "label": "Impugnação Art. 854 (Penhora On-line)",
+        "base": "Art. 854 CPC",
+        "impacto": "Bloqueio bancário definitivo sem defesa",
+    },
+}
+
+
+def detectar_xlsx():
+    """Encontra o xlsx de prazos mais recente na pasta dados/."""
+    padrao = os.path.join(DADOS_DIR, "Prazos pendentes*.xlsx")
+    arquivos = glob.glob(padrao)
+    if not arquivos:
+        # Fallback: qualquer xlsx na pasta
+        arquivos = glob.glob(os.path.join(DADOS_DIR, "*.xlsx"))
+    if not arquivos:
+        raise FileNotFoundError(f"Nenhum xlsx encontrado em: {DADOS_DIR}")
+    # Mais recente por data de modificação
+    return max(arquivos, key=os.path.getmtime)
+
+
+def abrev(nome):
+    p = nome.strip().split()
+    return f"{p[0].title()} {p[-1].title()}" if len(p) > 2 else nome.title()
+
+
+def calcular_atraso(prazo_val):
+    if isinstance(prazo_val, datetime):
+        d = prazo_val.date()
+    elif isinstance(prazo_val, date):
+        d = prazo_val
+    else:
+        return 0
+    return max((HOJE - d).days, 0)
+
+
+def nivel_risco(prec, atraso_medio):
+    if prec >= 3 or atraso_medio > 30:
+        return "CRITICO"
+    if prec >= 1 or atraso_medio >= 15:
+        return "MEDIO"
+    return "BAIXO"
+
+
+def carregar_dados(xlsx_path):
+    wb = openpyxl.load_workbook(xlsx_path)
+    ws = wb.active
+
+    advogados   = defaultdict(lambda: {"total": 0, "preclusivos": 0, "regulares": 0, "atrasos": []})
+    prec_tipos  = defaultdict(lambda: {"count": 0, "advogados": set()})
+    total = total_prec = 0
+    primeira = True
+
+    for row in ws.iter_rows(values_only=True):
+        if primeira:
+            primeira = False
+            continue
+        prazo_val, _, evento, responsavel = row
+        if not responsavel or not evento:
+            continue
+
+        resp  = str(responsavel).strip()
+        ev    = str(evento).strip().upper()
+        prec  = ev in PRECLUSIVOS_MAP
+        atr   = calcular_atraso(prazo_val)
+
+        total += 1
+        adv = advogados[resp]
+        adv["total"] += 1
+        adv["atrasos"].append(atr)
+
+        if prec:
+            total_prec += 1
+            adv["preclusivos"] += 1
+            prec_tipos[ev]["count"] += 1
+            prec_tipos[ev]["advogados"].add(resp)
+        else:
+            adv["regulares"] += 1
+
+    return advogados, prec_tipos, total, total_prec
+
+
+def build_kpis(advogados, total, total_prec):
+    taxa   = round(total_prec / total * 100, 1) if total else 0
+    maior  = max(advogados.items(), key=lambda x: x[1]["total"])
+    critico = max(
+        advogados.items(),
+        key=lambda x: (x[1]["preclusivos"] / x[1]["total"]) if x[1]["total"] else 0,
+    )
+    critico_pct = round(critico[1]["preclusivos"] / critico[1]["total"] * 100, 1) if critico[1]["total"] else 0
+    todos = [a for d in advogados.values() for a in d["atrasos"]]
+    atraso_geral = round(sum(todos) / len(todos), 1) if todos else 0
+    return {
+        "total": total,
+        "preclusivos": total_prec,
+        "regulares": total - total_prec,
+        "taxa_risco": taxa,
+        "maior_vol_nome": abrev(maior[0]),
+        "maior_vol_qtd": maior[1]["total"],
+        "critico_nome": abrev(critico[0]),
+        "critico_pct": critico_pct,
+        "atraso_medio_geral": atraso_geral,
+    }
+
+
+def build_tabela(advogados):
+    rows = []
+    for nome, d in advogados.items():
+        am = round(sum(d["atrasos"]) / len(d["atrasos"]), 1) if d["atrasos"] else 0
+        rows.append({
+            "nome": nome.title(),
+            "abrev": abrev(nome),
+            "total": d["total"],
+            "preclusivos": d["preclusivos"],
+            "regulares": d["regulares"],
+            "atraso_medio": am,
+            "risco": nivel_risco(d["preclusivos"], am),
+        })
+    rows.sort(key=lambda x: (-x["preclusivos"], -x["total"]))
+    return rows
+
+
+def build_prec_panel(prec_tipos):
+    panel = []
+    for ev, data in sorted(prec_tipos.items(), key=lambda x: -x[1]["count"]):
+        info = PRECLUSIVOS_MAP.get(ev, {})
+        panel.append({
+            "label":    info.get("label",   ev.title()),
+            "base":     info.get("base",    "—"),
+            "impacto":  info.get("impacto", "—"),
+            "count":    data["count"],
+            "advogados": sorted(abrev(a) for a in data["advogados"]),
+        })
+    return panel
+
+
+def build_chart(tabela):
+    return {
+        "labels":      [r["abrev"]      for r in tabela],
+        "preclusivos": [r["preclusivos"] for r in tabela],
+        "regulares":   [r["regulares"]  for r in tabela],
+    }
+
+
+# ── Templates HTML/CSS/JS ────────────────────────────────────
+
+HEAD_CSS = """\
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Prazos Pendentes — Taunay Advogados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080e1d;--surf:#0f1929;--surf2:#162035;--surf3:#1c2a42;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --blue:#3b82f6;--blue-l:#60a5fa;
+  --red:#ef4444;--red-l:#f87171;
+  --green:#22c55e;--green-l:#4ade80;
+  --orange:#f59e0b;--orange-l:#fbbf24;
+  --purple:#a855f7;--purple-l:#c084fc;
+  --text:#f1f5f9;--text2:#cbd5e1;--muted:#64748b;--muted2:#94a3b8;
+  --r:14px;--rs:8px;--rx:20px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;font-size:14px}
+
+.hdr{
+  background:linear-gradient(135deg,#0a1628 0%,#0f1f45 40%,#140d35 80%,#091424 100%);
+  border-bottom:1px solid var(--border);padding:40px 48px 36px;
+  position:relative;overflow:hidden;
+}
+.hdr-glow1{position:absolute;top:-80px;right:-80px;width:360px;height:360px;
+  background:radial-gradient(circle,rgba(59,130,246,.18) 0%,transparent 65%);pointer-events:none}
+.hdr-glow2{position:absolute;bottom:-60px;left:38%;width:240px;height:240px;
+  background:radial-gradient(circle,rgba(168,85,247,.12) 0%,transparent 65%);pointer-events:none}
+.hdr-inner{max-width:1360px;margin:0 auto;position:relative;z-index:1}
+.hdr-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.28);
+  border-radius:var(--rx);padding:5px 16px;margin-bottom:18px;
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--blue-l);text-transform:uppercase;
+}
+h1{font-size:34px;font-weight:800;letter-spacing:-.6px;line-height:1.15}
+h1 em{font-style:normal;color:var(--blue-l)}
+.hdr-sub{margin-top:10px;color:var(--muted2);font-size:14px}
+.hdr-chips{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--muted2)}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-b{background:var(--blue)}.dot-o{background:var(--orange)}.dot-r{background:var(--red)}
+
+.main{max-width:1360px;margin:0 auto;padding:40px 48px 72px}
+.sec-hdr{
+  display:flex;align-items:center;gap:12px;margin-bottom:22px;margin-top:52px;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+}
+.sec-hdr:first-of-type{margin-top:0}
+.sec-hdr::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:16px}
+.kpi{
+  background:var(--surf);border:1px solid var(--border);border-radius:var(--r);
+  padding:22px 20px 20px;position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;cursor:default;
+}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.45)}
+.kpi::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:var(--r) var(--r) 0 0;background:var(--ac,var(--blue));
+}
+.kpi::after{
+  content:'';position:absolute;top:0;right:0;width:80px;height:80px;
+  background:radial-gradient(circle at top right,var(--ac-glow,rgba(59,130,246,.08)) 0%,transparent 70%);
+}
+.kpi.red{--ac:var(--red);--ac-glow:rgba(239,68,68,.1)}
+.kpi.orange{--ac:var(--orange);--ac-glow:rgba(245,158,11,.1)}
+.kpi.green{--ac:var(--green);--ac-glow:rgba(34,197,94,.08)}
+.kpi-ico{font-size:22px;margin-bottom:12px;display:block;line-height:1}
+.kpi-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.kpi-val{font-size:28px;font-weight:800;line-height:1;letter-spacing:-1px}
+.kpi-sub{margin-top:7px;font-size:11px;color:var(--muted2);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.tbl-wrap{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead tr{background:var(--surf2)}
+thead th{
+  padding:14px 20px;text-align:left;
+  font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;
+}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,.025)}
+td{padding:15px 20px;vertical-align:middle}
+.td-n{font-weight:700;font-size:13.5px}
+.td-num{font-weight:700;text-align:center;font-size:15px}
+.td-p{color:var(--red-l)}.td-r{color:var(--blue-l)}.td-d{color:var(--orange-l)}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:var(--rx);font-size:11px;font-weight:700;white-space:nowrap}
+.b-red{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.22)}
+.b-yel{background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.22)}
+.b-grn{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.22)}
+
+.prec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.pc{
+  background:var(--surf);border:1px solid rgba(239,68,68,.18);border-radius:var(--r);
+  padding:20px 22px 18px;position:relative;overflow:hidden;transition:box-shadow .2s;
+}
+.pc:hover{box-shadow:0 0 0 1px rgba(239,68,68,.35),0 8px 28px rgba(239,68,68,.1)}
+.pc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+  background:linear-gradient(180deg,var(--red) 0%,rgba(239,68,68,.2) 100%)}
+.pc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+.pc-lbl{font-size:13px;font-weight:700;padding-left:10px;line-height:1.35}
+.pc-cnt{flex-shrink:0;background:rgba(239,68,68,.18);color:var(--red-l);border-radius:var(--rs);
+  padding:5px 12px;font-size:20px;font-weight:800;min-width:52px;text-align:center;line-height:1.2}
+.pc-base{padding-left:10px;font-size:11px;font-weight:700;color:var(--blue-l);letter-spacing:.04em;margin-bottom:4px}
+.pc-imp{padding-left:10px;font-size:12px;color:var(--muted2);line-height:1.55;margin-bottom:8px}
+.pc-advs{padding-left:10px;display:flex;flex-wrap:wrap;gap:6px}
+.pc-tag{background:var(--surf2);border:1px solid var(--border2);border-radius:5px;
+  padding:2px 9px;font-size:10.5px;color:var(--muted2);font-weight:500}
+
+.chart-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:30px 30px 26px}
+.chart-ttl{font-size:16px;font-weight:700;margin-bottom:4px}
+.chart-ins{font-size:12px;color:var(--muted2);margin-bottom:22px}
+.chart-wrap{position:relative;height:330px}
+
+.legal{
+  margin-top:44px;
+  background:linear-gradient(135deg,rgba(239,68,68,.07) 0%,rgba(245,158,11,.04) 100%);
+  border:1px solid rgba(239,68,68,.18);border-radius:var(--r);
+  padding:22px 26px;display:flex;align-items:flex-start;gap:18px;
+}
+.legal-ico{font-size:30px;flex-shrink:0;line-height:1;padding-top:2px}
+.legal-txt{font-size:13px;color:var(--muted2);line-height:1.75}
+.legal-txt strong{color:var(--red-l);font-weight:700}
+
+.ftr{text-align:center;padding:32px 20px;font-size:11px;color:rgba(148,163,184,.4);
+  border-top:1px solid var(--border);margin-top:24px}
+</style>
+</head>
+<body>
+"""
+
+def render_body(kpis, data_str):
+    return f"""
+<header class="hdr">
+  <div class="hdr-glow1"></div><div class="hdr-glow2"></div>
+  <div class="hdr-inner">
+    <div class="hdr-pill">&#9878; Gestão de Prazos Processuais</div>
+    <h1>Dashboard de <em>Prazos Pendentes</em></h1>
+    <p class="hdr-sub">Taunay Advogados &nbsp;·&nbsp; Monitoramento executivo de risco processual por advogado</p>
+    <div class="hdr-chips">
+      <span class="chip"><span class="dot dot-b"></span>Data-base: {data_str}</span>
+      <span class="chip"><span class="dot dot-o"></span><span id="h-total">—</span> prazos monitorados</span>
+      <span class="chip"><span class="dot dot-r"></span><span id="h-prec">—</span> preclusivos identificados</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="sec-hdr"><span>🔢</span> Indicadores-Chave de Desempenho</div>
+  <div class="kpi-grid" id="kpi-grid"></div>
+
+  <div class="sec-hdr"><span>📊</span> Situação por Advogado — Semáforo de Risco</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th>Advogado(a)</th>
+        <th style="text-align:center">Total</th>
+        <th style="text-align:center">Preclusivos</th>
+        <th style="text-align:center">Regulares</th>
+        <th style="text-align:center">Atraso Médio</th>
+        <th style="text-align:center">Nível de Risco</th>
+      </tr></thead>
+      <tbody id="tbl-body"></tbody>
+    </table>
+  </div>
+
+  <div class="sec-hdr"><span>🚨</span> Painel de Prazos Preclusivos — Atenção Imediata</div>
+  <div class="prec-grid" id="prec-grid"></div>
+
+  <div class="sec-hdr"><span>📈</span> Distribuição de Prazos por Advogado</div>
+  <div class="chart-card">
+    <div class="chart-ttl">Prazos Preclusivos × Regulares por Advogado</div>
+    <div class="chart-ins">Barras vermelhas = risco de perda processual imediata &nbsp;|&nbsp; Barras azuis = prazos regulares pendentes</div>
+    <div class="chart-wrap"><canvas id="bar-chart"></canvas></div>
+  </div>
+
+  <div class="legal">
+    <div class="legal-ico">&#9878;&#65039;</div>
+    <div class="legal-txt">
+      <strong>Observação Jurídica Importante:</strong>
+      Prazos preclusivos geram efeitos processuais <strong>irreversíveis</strong>.
+      A perda da <strong>contestação</strong> configura revelia (Art. 344 CPC);
+      a ausência de <strong>contrarrazões</strong> provoca trânsito em julgado imediato (Art. 1.003 CPC);
+      a <strong>impugnação ao cumprimento</strong> não apresentada permite execução definitiva sem defesa (Art. 525 §5º CPC);
+      a não impugnação ao <strong>laudo pericial</strong> implica aceitação tácita (Art. 477 CPC);
+      a perda do <strong>agravo de instrumento</strong> torna imutável a decisão interlocutória (Art. 1.015 CPC).
+      Recomenda-se providência <strong>imediata e prioritária</strong> para todos os casos identificados.
+    </div>
+  </div>
+</main>
+
+<footer class="ftr">
+  Dashboard gerado em {data_str} &nbsp;·&nbsp; Dados: Autojur / Sistema de Gestão de Prazos &nbsp;·&nbsp;
+  <strong style="color:#334155">Uso interno — Taunay Advogados</strong>
+</footer>
+"""
+
+JS_CODE = """
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+
+document.getElementById('h-total').textContent = KPI.total;
+document.getElementById('h-prec').textContent  = KPI.preclusivos;
+
+const kpiDefs = [
+  { lbl:'Total de Prazos',    ico:'📋', cls:'',       val:()=>KPI.total,                       sub:()=>'prazos cadastrados' },
+  { lbl:'Preclusivos',        ico:'🚨', cls:'red',    val:()=>KPI.preclusivos,                 sub:()=>'risco de perda processual' },
+  { lbl:'Regulares',          ico:'📁', cls:'',       val:()=>KPI.regulares,                   sub:()=>'prazos sem preclusão' },
+  { lbl:'Taxa de Risco',      ico:'📉', cls:'orange', val:()=>KPI.taxa_risco+'%',              sub:()=>'preclusivos ÷ total' },
+  { lbl:'Maior Volume',       ico:'👤', cls:'',       val:()=>KPI.maior_vol_qtd+' prazos',     sub:()=>KPI.maior_vol_nome },
+  { lbl:'Situação Crítica',   ico:'🔴', cls:'red',    val:()=>KPI.critico_pct+'% preclusivos', sub:()=>KPI.critico_nome },
+  { lbl:'Atraso Médio Geral', ico:'⏱',  cls:'orange', val:()=>KPI.atraso_medio_geral+' dias', sub:()=>'média de todos os prazos' },
+];
+
+const grid = document.getElementById('kpi-grid');
+kpiDefs.forEach(d => {
+  const el = document.createElement('div');
+  el.className = 'kpi ' + d.cls;
+  el.innerHTML =
+    '<span class="kpi-ico">' + d.ico + '</span>' +
+    '<div class="kpi-lbl">'  + esc(d.lbl)  + '</div>' +
+    '<div class="kpi-val">'  + esc(d.val()) + '</div>' +
+    '<div class="kpi-sub">'  + esc(d.sub()) + '</div>';
+  grid.appendChild(el);
+});
+
+const tbody = document.getElementById('tbl-body');
+TABELA.forEach(r => {
+  const badge = r.risco === 'CRITICO'
+    ? '<span class="badge b-red">🔴 Crítico</span>'
+    : r.risco === 'MEDIO'
+    ? '<span class="badge b-yel">🟡 Médio</span>'
+    : '<span class="badge b-grn">🟢 Baixo</span>';
+  const tr = document.createElement('tr');
+  tr.innerHTML =
+    '<td class="td-n">'           + esc(r.nome)        + '</td>' +
+    '<td class="td-num">'         + r.total             + '</td>' +
+    '<td class="td-num td-p">'    + r.preclusivos       + '</td>' +
+    '<td class="td-num td-r">'    + r.regulares         + '</td>' +
+    '<td class="td-num td-d">'    + r.atraso_medio + ' dias</td>' +
+    '<td style="text-align:center">' + badge            + '</td>';
+  tbody.appendChild(tr);
+});
+
+const precGrid = document.getElementById('prec-grid');
+PREC_PANEL.forEach(p => {
+  const tags = p.advogados.map(a => '<span class="pc-tag">' + esc(a) + '</span>').join('');
+  const el = document.createElement('div');
+  el.className = 'pc';
+  el.innerHTML =
+    '<div class="pc-head">' +
+      '<div class="pc-lbl">&#9888; ' + esc(p.label) + '</div>' +
+      '<div class="pc-cnt">' + p.count + '</div>' +
+    '</div>' +
+    '<div class="pc-base">'  + esc(p.base)    + '</div>' +
+    '<div class="pc-imp">'   + esc(p.impacto) + '</div>' +
+    '<div class="pc-advs">'  + tags           + '</div>';
+  precGrid.appendChild(el);
+});
+
+Chart.defaults.color = '#64748b';
+Chart.defaults.font.family = 'Inter';
+new Chart(document.getElementById('bar-chart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: CHART.labels,
+    datasets: [
+      { label:'Preclusivos', data:CHART.preclusivos,
+        backgroundColor:'rgba(239,68,68,.72)', borderColor:'#ef4444',
+        borderWidth:1, borderRadius:5, borderSkipped:false },
+      { label:'Regulares', data:CHART.regulares,
+        backgroundColor:'rgba(59,130,246,.60)', borderColor:'#3b82f6',
+        borderWidth:1, borderRadius:5, borderSkipped:false },
+    ],
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins: {
+      legend: { position:'top', labels:{ color:'#94a3b8', font:{size:12,weight:'600'}, padding:18, usePointStyle:true, pointStyleWidth:10 } },
+      tooltip: {
+        backgroundColor:'#162035', borderColor:'rgba(255,255,255,.1)', borderWidth:1,
+        titleColor:'#f1f5f9', bodyColor:'#94a3b8', padding:14,
+        callbacks: { footer: items => 'Total: '+(CHART.preclusivos[items[0].dataIndex]+CHART.regulares[items[0].dataIndex])+' prazos' }
+      },
+    },
+    scales: {
+      x: { stacked:true, grid:{color:'rgba(255,255,255,.04)'}, ticks:{color:'#64748b',font:{size:11}} },
+      y: { stacked:true, beginAtZero:true, grid:{color:'rgba(255,255,255,.06)'}, ticks:{color:'#64748b',font:{size:11},stepSize:10} },
+    },
+  },
+});
+"""
+
+
+def gerar_html(kpis, tabela, prec_panel, chart, data_str):
+    data_block = (
+        f"const KPI       = {json.dumps(kpis,       ensure_ascii=False)};\n"
+        f"const TABELA    = {json.dumps(tabela,      ensure_ascii=False)};\n"
+        f"const PREC_PANEL= {json.dumps(prec_panel,  ensure_ascii=False)};\n"
+        f"const CHART     = {json.dumps(chart,       ensure_ascii=False)};\n"
+    )
+    return (
+        HEAD_CSS
+        + render_body(kpis, data_str)
+        + "<script>\n"
+        + data_block
+        + JS_CODE
+        + "</script>\n</body>\n</html>\n"
+    )
+
+
+def main():
+    xlsx = detectar_xlsx()
+    nome_arq = os.path.basename(xlsx)
+    data_str = HOJE.strftime("%d/%m/%Y")
+
+    print(f"Arquivo: {nome_arq}")
+    print(f"Data-base: {data_str}")
+
+    advogados, prec_tipos, total, total_prec = carregar_dados(xlsx)
+    print(f"Dados: {total} prazos | {total_prec} preclusivos | {len(advogados)} advogados")
+
+    kpis      = build_kpis(advogados, total, total_prec)
+    tabela    = build_tabela(advogados)
+    prec_panel= build_prec_panel(prec_tipos)
+    chart     = build_chart(tabela)
+
+    html = gerar_html(kpis, tabela, prec_panel, chart, data_str)
+    with open(OUTPUT, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print(f"Dashboard: {OUTPUT}")
+    print(f"  Preclusivos: {kpis['preclusivos']} ({kpis['taxa_risco']}%) | Atraso médio: {kpis['atraso_medio_geral']} dias")
+    print(f"  Maior volume: {kpis['maior_vol_nome']} ({kpis['maior_vol_qtd']})")
+    print(f"  Situação crítica: {kpis['critico_nome']} ({kpis['critico_pct']}% preclusivos)")
+
+
+if __name__ == "__main__":
+    main()

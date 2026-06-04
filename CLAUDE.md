@@ -41,7 +41,7 @@ Profissional, técnico, persuasivo. Precisão de mestre em Direito Processual Ci
 - Autojur (gestão processual)
 - Python: Pandas, Selenium, Playwright, PyAutoGUI, Pytesseract
 - Gemini, ChatGPT
-- *(MCPs instalados aparecerão aqui conforme forem adicionados)*
+- MCP Playwright (`@playwright/mcp`) — controle de browser para automações RPA
 
 ---
 
@@ -57,6 +57,9 @@ Todos os comandos ficam em `.claude/commands/`:
 - `/syncar` — Faz commit e push das mudanças pro GitHub (também configurado como hook automático ao parar a sessão)
 
 Skills pré-instaladas ficam em `.claude/skills/` ou `~/.claude/skills/` (globais). Templates prontos para adaptação estão em `templates/skills/`.
+
+Skills disponíveis neste workspace:
+- `/extrator-gerpro` — Extrai relatório de encerramentos do Gerpro via MCP Playwright. Pede datas ao usuário, marca todos os filtros da Pesquisa Avançada e salva o arquivo em `automacoes/Relatório de Encerramentos Gerpro/`.
 
 ---
 
