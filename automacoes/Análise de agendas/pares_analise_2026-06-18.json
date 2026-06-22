@@ -1,0 +1,485 @@
+[
+  {
+    "row_excel": 3,
+    "cnj": "0004584-06.2020.8.19.0067",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de depósito voluntário",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 4,
+    "cnj": "0004584-06.2020.8.19.0067",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de depósito voluntário",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 5,
+    "cnj": "0001929-34.2022.8.19.0021",
+    "ged": "PETIÇÃO COMPROVANDO PAGAMENTO DE HONORÁRIOS PERICIAIS",
+    "teor": "Comprovação de depósito voluntário de honorários periciais",
+    "evento": "PETICIONAR PGTO HON PERICIAIS"
+  },
+  {
+    "row_excel": 8,
+    "cnj": "0019340-90.2022.8.19.0021",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Comprovação do cumprimento de obrigação de fazer",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 9,
+    "cnj": "0824868-68.2023.8.19.0205",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Cumprimento de obrigação de fazer e pagar",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 10,
+    "cnj": "0000179-49.2022.8.19.0036",
+    "ged": "PETIÇÃO REQ LEVANTAMENTO DOS CONSIGNADOS",
+    "teor": "Pedido de expedição de alvará de valores consignados",
+    "evento": "PETICIONAR LEVANTAMENTO DE CONSIGNADOS"
+  },
+  {
+    "row_excel": 11,
+    "cnj": "0015543-09.2022.8.19.0021",
+    "ged": "COMPROVAÇÃO DE RECOLHIMENTO DE CUSTAS",
+    "teor": "Informar recolhimento de custas de impugnação à execução",
+    "evento": "MANIFESTAÇÃO - CPC73 - 05C"
+  },
+  {
+    "row_excel": 12,
+    "cnj": "0830113-64.2022.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de guia de acordo e cumprimento",
+    "evento": "PETICIONAR OBRIGAÇÃO DE FAZER ACORDO"
+  },
+  {
+    "row_excel": 13,
+    "cnj": "0830113-64.2022.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de guia de acordo e cumprimento",
+    "evento": "PETICIONAR PAGAMENTO ACORDO"
+  },
+  {
+    "row_excel": 14,
+    "cnj": "0808493-25.2024.8.19.0021",
+    "ged": "PETIÇÃO REQ LEVANTAMENTO DOS CONSIGNADOS",
+    "teor": "Pedido de expedição de alvará de valores consignados",
+    "evento": "MANIFESTAÇÃO - 48H"
+  },
+  {
+    "row_excel": 17,
+    "cnj": "0019340-90.2022.8.19.0021",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Comprovação do cumprimento de obrigação de fazer",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 27,
+    "cnj": "0021661-65.2021.8.19.0205",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Informar cumprimento de obrigação e baixa de faturas",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 31,
+    "cnj": "0060739-07.2019.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de comprovantes de pagamento e obrigação de fazer",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 37,
+    "cnj": "0016666-09.2021.8.19.0205",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Informar cumprimento de obrigação e baixa de faturas",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 40,
+    "cnj": "0031037-46.2019.8.19.0205",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de depósito voluntário",
+    "evento": "PETICIONAR PGTO HON PERICIAIS"
+  },
+  {
+    "row_excel": 45,
+    "cnj": "0824868-68.2023.8.19.0205",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Cumprimento de obrigação de fazer e pagar",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 48,
+    "cnj": "0015528-39.2015.8.19.0036",
+    "ged": "PETIÇÃO COMPROVANDO PAGAMENTO DE HONORÁRIOS PERICIAIS",
+    "teor": "Comprovação de depósito voluntário de honorários periciais",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 49,
+    "cnj": "0002562-57.2015.8.19.0064",
+    "ged": "COMPROVAÇÃO DE RECOLHIMENTO DE CUSTAS",
+    "teor": "Informar recolhimento das custas da penhora portas adentro",
+    "evento": "MANIFESTAÇÃO - CPC73 - 05C"
+  },
+  {
+    "row_excel": 55,
+    "cnj": "3015279-59.2026.8.19.0001",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação",
+    "evento": "CONTESTAÇÃO LIGHT"
+  },
+  {
+    "row_excel": 56,
+    "cnj": "3085004-38.2026.8.19.0001",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação",
+    "evento": "CONTESTAÇÃO LIGHT"
+  },
+  {
+    "row_excel": 64,
+    "cnj": "0812716-79.2023.8.19.0207",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Informar cumprimento de obrigação de pagar.",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 68,
+    "cnj": "0008785-51.2014.8.19.0067",
+    "ged": "EMBARGOS À EXECUÇÃO",
+    "teor": "Impugnação à penhora",
+    "evento": "IMPUG ART. 854 NCPC"
+  },
+  {
+    "row_excel": 69,
+    "cnj": "3101647-71.2026.8.19.0001",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação",
+    "evento": "CONTESTAÇÃO LIGHT"
+  },
+  {
+    "row_excel": 70,
+    "cnj": "0144090-30.2022.8.19.0001",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Manifestação sobre impossibilidade de cumprimento de obrigação",
+    "evento": "PETICIONAR OBRIG DE FAZER"
+  },
+  {
+    "row_excel": 73,
+    "cnj": "0007515-41.2021.8.19.0036",
+    "ged": "PETIÇÃO CONCORDANDO COM OS HON.PERICIAIS",
+    "teor": "Manifestação de não oposição aos honorários periciais",
+    "evento": "PROPOSTA HONORÁRIOS PERICIAIS"
+  },
+  {
+    "row_excel": 74,
+    "cnj": "0049608-35.2019.8.19.0021",
+    "ged": "PRODUÇÃO DE PROVAS",
+    "teor": "Manifestação sobre impugnação ao cumprimento de sentença",
+    "evento": "PROVAS - 15U"
+  },
+  {
+    "row_excel": 75,
+    "cnj": "0025425-34.2018.8.19.0021",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de embargos de declaração",
+    "evento": "CONTRARRAZÕES EM ED"
+  },
+  {
+    "row_excel": 76,
+    "cnj": "0858762-05.2023.8.19.0021",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de Embargos de Declaração",
+    "evento": "CONTRARRAZÕES EM ED"
+  },
+  {
+    "row_excel": 77,
+    "cnj": "0271870-60.2016.8.19.0001",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Informação de recolhimento de custas para mandado",
+    "evento": "MANIFESTAÇÃO - 24H"
+  },
+  {
+    "row_excel": 81,
+    "cnj": "0856004-19.2024.8.19.0021",
+    "ged": "IMPUGNAÇÃO AO LAUDO PERICIAL",
+    "teor": "Manifestação da ré sobre laudo pericial",
+    "evento": "IMPUGNAR LAUDO / JUNTAR PARECER - NCPC"
+  },
+  {
+    "row_excel": 82,
+    "cnj": "0011775-75.2022.8.19.0021",
+    "ged": "MANIFESTAÇÃO CONCORDANDO COM O LAUDO PERICIAL",
+    "teor": "Concordância com o laudo pericial",
+    "evento": "IMPUGNAR LAUDO / JUNTAR PARECER - NCPC"
+  },
+  {
+    "row_excel": 84,
+    "cnj": "0035392-31.2021.8.19.0205",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Esclarecimento sobre valores consignados e expedição de mandado",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 85,
+    "cnj": "0013347-71.2019.8.19.0021",
+    "ged": "PETIÇÃO REQ LEVANTAMENTO DOS CONSIGNADOS",
+    "teor": "Pedido de expedição de alvará de valores consignados",
+    "evento": "PETICIONAR LEVANTAMENTO DE CONSIGNADOS"
+  },
+  {
+    "row_excel": 86,
+    "cnj": "0810177-83.2022.8.19.0205",
+    "ged": "MEMORIAIS DE RECURSO",
+    "teor": "Memoriais",
+    "evento": "MEMORIAIS DE 2ª INSTÂNCIA"
+  },
+  {
+    "row_excel": 88,
+    "cnj": "0008501-45.2018.8.19.0021",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões de Apelação",
+    "evento": "CONTRARRAZÕES EM APELAÇÃO"
+  },
+  {
+    "row_excel": 89,
+    "cnj": "0033040-17.2014.8.19.0021",
+    "ged": "IMPUGNAÇÃO AO LAUDO PERICIAL",
+    "teor": "Impugnação ao laudo pericial",
+    "evento": "IMPUGNAR LAUDO / JUNTAR PARECER - NCPC"
+  },
+  {
+    "row_excel": 90,
+    "cnj": "0813395-22.2022.8.19.0205",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Expedição de mandado de pagamento",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 97,
+    "cnj": "0804974-43.2022.8.19.0205",
+    "ged": "PETIÇÃO - PERÍCIA – DOCUMENTOS PARA O PERITO",
+    "teor": "Juntada de documentação solicitada pelo perito",
+    "evento": "SOBRE PET DO PERITO"
+  },
+  {
+    "row_excel": 108,
+    "cnj": "0006149-73.2018.8.19.0067",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Manifestação sobre os cálculos na execução",
+    "evento": "SOBRE CÁLCULOS CONTADOR"
+  },
+  {
+    "row_excel": 112,
+    "cnj": "0825429-62.2023.8.19.0021",
+    "ged": "APELAÇÃO CÍVEL",
+    "teor": "Recurso de Apelação",
+    "evento": "ANÁLISE / ENVIAR PEDIDO DE DISPENSA"
+  },
+  {
+    "row_excel": 113,
+    "cnj": "0956484-65.2024.8.19.0001",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de declaração",
+    "evento": "ANÁLISE / ENVIAR PEDIDO DE DISPENSA"
+  },
+  {
+    "row_excel": 114,
+    "cnj": "0807257-34.2025.8.19.0205",
+    "ged": "E-MAIL - ENVIO DE MEMORIAIS",
+    "teor": "Apresentação de memoriais.",
+    "evento": "REQUERER SESSÃO JULG PRESENCIAL"
+  },
+  {
+    "row_excel": 123,
+    "cnj": "0824169-14.2022.8.19.0205",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Manifestação sobre os esclarecimentos periciais",
+    "evento": "SOBRE PET DO PERITO"
+  },
+  {
+    "row_excel": 124,
+    "cnj": "0812340-02.2023.8.19.0205",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Concordância com a extinção do processo por desistência",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 126,
+    "cnj": "0813249-48.2022.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – DOCUMENTOS PARA O PERITO",
+    "teor": "Juntada de documentação solicitada pelo perito",
+    "evento": "SOBRE PET DO PERITO"
+  },
+  {
+    "row_excel": 127,
+    "cnj": "0060318-85.2017.8.19.0021",
+    "ged": "PETIÇÃO - PERÍCIA – DOCUMENTOS PARA O PERITO",
+    "teor": "Juntada de documentação solicitada pelo perito",
+    "evento": "SOBRE PET DO PERITO"
+  },
+  {
+    "row_excel": 128,
+    "cnj": "0937578-90.2025.8.19.0001",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Manifestação de desinteresse na composição amigável",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 129,
+    "cnj": "0035746-31.2018.8.19.0021",
+    "ged": "PETIÇÃO REQ LEVANTAMENTO DOS CONSIGNADOS",
+    "teor": "Levantamento de valores consignados judicialmente",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 130,
+    "cnj": "0808475-22.2025.8.19.0036",
+    "ged": "PETIÇÃO INTERCORRENTE",
+    "teor": "Manifestação sobre decisão saneadora e julgamento antecipado",
+    "evento": "MANIFESTAÇÃO - NCPC - 05U"
+  },
+  {
+    "row_excel": 150,
+    "cnj": "0106977-42.2022.8.19.0001",
+    "ged": "PETIÇÃO - PERÍCIA – DOCUMENTOS PARA O PERITO",
+    "teor": "Juntada de documentação solicitada pelo perito",
+    "evento": "JUNT DOCS PERITO"
+  },
+  {
+    "row_excel": 153,
+    "cnj": "0801555-15.2022.8.19.0205",
+    "ged": "ALEGAÇÕES FINAIS",
+    "teor": "Alegações finais",
+    "evento": "ALEGAÇÕES FINAIS - CPC73"
+  },
+  {
+    "row_excel": 154,
+    "cnj": "0834182-42.2022.8.19.0021",
+    "ged": "ALEGAÇÕES FINAIS",
+    "teor": "Alegações finais",
+    "evento": "ALEGAÇÕES FINAIS - NCPC"
+  },
+  {
+    "row_excel": 155,
+    "cnj": "0802114-07.2022.8.19.0064",
+    "ged": "ALEGAÇÕES FINAIS",
+    "teor": "Alegações finais",
+    "evento": "ALEGAÇÕES FINAIS - NCPC"
+  },
+  {
+    "row_excel": 158,
+    "cnj": "0004584-06.2020.8.19.0067",
+    "ged": "COMPROVANTE PAGTO",
+    "teor": "Juntada de guia de depósito voluntário",
+    "evento": "ACOMPANHAR"
+  },
+  {
+    "row_excel": 161,
+    "cnj": "0880707-74.2024.8.19.0001",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões ao recurso de embargos de declaração",
+    "evento": "ANÁLISE / ENVIAR PEDIDO DE DISPENSA EM RESP"
+  },
+  {
+    "row_excel": 171,
+    "cnj": "0864954-17.2024.8.19.0021",
+    "ged": "ALEGAÇÕES FINAIS",
+    "teor": "Alegações finais",
+    "evento": "ALEGAÇÕES FINAIS - NCPC"
+  },
+  {
+    "row_excel": 173,
+    "cnj": "0852555-53.2024.8.19.0021",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de Declaração com Efeitos Infringentes",
+    "evento": "ANÁLISE / ENVIAR PEDIDO DE DISPENSA EM RESP"
+  },
+  {
+    "row_excel": 174,
+    "cnj": "0871813-46.2023.8.19.0001",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de Declaração",
+    "evento": "ANÁLISE / ENVIAR PEDIDO DE DISPENSA EM RESP"
+  },
+  {
+    "row_excel": 211,
+    "cnj": "0060739-07.2019.8.19.0021",
+    "ged": "COMPROVANTE CUMPRIMENTO OBRIG FAZER",
+    "teor": "Juntada de comprovantes de pagamento e obrigação de fazer",
+    "evento": "PETICIONAR PAGAMENTO"
+  },
+  {
+    "row_excel": 229,
+    "cnj": "0829554-40.2022.8.19.0205",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de Declaração",
+    "evento": "ANÁLISE / ENVIAR PEDIDO DE DISPENSA EM RESP"
+  },
+  {
+    "row_excel": 231,
+    "cnj": "0825429-62.2023.8.19.0021",
+    "ged": "APELAÇÃO CÍVEL",
+    "teor": "Recurso de Apelação",
+    "evento": "APELAÇÃO CÍVEL"
+  },
+  {
+    "row_excel": 234,
+    "cnj": "3085004-38.2026.8.19.0001",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação",
+    "evento": "AGRAVO DE INSTRUMENTO"
+  },
+  {
+    "row_excel": 237,
+    "cnj": "3085004-38.2026.8.19.0001",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação",
+    "evento": "PETIÇÃO 1018"
+  },
+  {
+    "row_excel": 241,
+    "cnj": "3101647-71.2026.8.19.0001",
+    "ged": "CONTESTAÇÃO CÍVEL",
+    "teor": "Contestação",
+    "evento": "CUMPRIMENTO LIMINAR"
+  },
+  {
+    "row_excel": 250,
+    "cnj": "0956484-65.2024.8.19.0001",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de declaração",
+    "evento": "APELAÇÃO CÍVEL"
+  },
+  {
+    "row_excel": 257,
+    "cnj": "0852555-53.2024.8.19.0021",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de Declaração com Efeitos Infringentes",
+    "evento": "RECURSO ESPECIAL"
+  },
+  {
+    "row_excel": 260,
+    "cnj": "0871813-46.2023.8.19.0001",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de Declaração",
+    "evento": "RECURSO ESPECIAL"
+  },
+  {
+    "row_excel": 262,
+    "cnj": "0880707-74.2024.8.19.0001",
+    "ged": "CONTRARRAZÕES DE RECURSO",
+    "teor": "Contrarrazões ao recurso de embargos de declaração",
+    "evento": "RECURSO ESPECIAL"
+  },
+  {
+    "row_excel": 267,
+    "cnj": "0829554-40.2022.8.19.0205",
+    "ged": "EMBARGOS DE DECLARAÇÃO",
+    "teor": "Embargos de Declaração",
+    "evento": "RECURSO ESPECIAL"
+  }
+]

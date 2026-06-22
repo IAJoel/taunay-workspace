@@ -76,7 +76,7 @@ def detectar(prefixo):
         )
     return sorted(matches)[-1]
 
-def acumular(prefixo, aba, key_col):
+def acumular(prefixo, aba, key_col, rename_cols=None):
     """Lê TODOS os arquivos matching, faz union e deduplica por key_col (última entrada prevalece)."""
     matches = sorted([
         m for m in glob.glob(os.path.join(PASTA, f"{prefixo}*.xlsx"))
@@ -89,7 +89,10 @@ def acumular(prefixo, aba, key_col):
     frames = []
     for m in matches:
         try:
-            frames.append(ler_excel(m, aba))
+            df = ler_excel(m, aba)
+            if rename_cols:
+                df = df.rename(columns=rename_cols)
+            frames.append(df)
         except Exception as e:
             print(f"  [AVISO] Ignorando {os.path.basename(m)}: {e}")
     combined = pd.concat(frames, ignore_index=True)
@@ -202,9 +205,10 @@ def modo_gerar():
     AP_CONT   = "Conteúdo"
     GED_KEY   = "Número CNJ > Pasta"
     GED_TIPO  = "Tipo Documento"
-    PET_KEY   = "Os números dos processos informados nas petições"
+    PET_KEY   = "Número que está na petição"
     PET_NUM   = "Número que está no protocolo da petição"
     PET_TEOR  = "Teor da petição"
+    PET_RENAME = {"Os números dos processos informados nas petições": PET_KEY}
 
     # Aprovados: arquivo mais recente (também aceita "Alterado de realizado para finalizado")
     try:
@@ -218,7 +222,7 @@ def modo_gerar():
 
     df_ap  = ler_excel(arq_ap, "Relatório")
     df_ged = acumular("Base GED", "Relatório", GED_KEY)
-    df_pet = acumular("Análise das petições", "Planilha1", PET_KEY)
+    df_pet = acumular("Análise das petições", "Planilha1", PET_KEY, rename_cols=PET_RENAME)
 
     n_ged = len(glob.glob(os.path.join(PASTA, "Base GED*.xlsx")))
     n_pet = len(glob.glob(os.path.join(PASTA, "Análise das petições*.xlsx")))
