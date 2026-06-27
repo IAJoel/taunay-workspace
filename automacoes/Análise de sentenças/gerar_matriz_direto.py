@@ -36,219 +36,142 @@ CABECALHOS = [
 
 LARGURAS = [34, 20, 20, 22, 36, 22, 44, 28, 44]
 
-# Dados analisados: (CNJ, dano_moral, dano_material, situacao, juiz, dias_sem_energia, materia)
+# Dados analisados: (CNJ, dano_moral, dano_material, situacao, juiz, dias_sem_energia, fase_atual, materia)
 # dano_moral: valor em centavos (ex: 300000 = R$3.000,00) ou "000" se improcedente
 # dano_material: valor em centavos ou 0 se improcedente/ilíquido
 # dias_sem_energia: string com número ou "" se não aplicável
+# fase_atual: valor do campo "Nome > Evento" do arquivo de entrada
 # materia: valor da coluna "Descrição dos Objetos > Pasta > Pasta Tarefa"
+# Gerado em 25/06/2026 a partir de Follow Up Diario-25-06-2026_09_44_36.xlsx
 DADOS = [
-    (
-        "0027980-87.2019.8.19.0021",
-        "300000",
-        "0",
-        "Procedente em Parte",
-        "Não identificado",
-        "",
-        "PARCELAMENTO CAMPO - VALOR DIVERGENTE",
-    ),
-    (
-        "0031514-68.2021.8.19.0021",
-        "300000",
-        "0",
-        "Procedente em Parte",
-        "Não identificado",
-        "",
-        "FATURAS - AUMENTO DE CONSUMO",
-    ),
-    (
-        "0801451-52.2024.8.19.0205",
-        "000",
-        "0",
-        "Improcedente",
-        "Marcelo Mondego de Carvalho Lima",
-        "",
-        "CADASTRO - ENCERRAMENTO DE CONTRATO",
-    ),
-    (
-        "0803174-43.2023.8.19.0205",
-        "300000",
-        "0",
-        "Procedente",
-        "Alex Quaresma Ravache",
-        "",
-        "Cobrança - Negativação SERASA/SPC",
-    ),
-    (
-        "0804159-04.2024.8.19.0067",
-        "500000",
-        "0",
-        "Procedente",
-        "Jeison Anders Tavares",
-        "",
-        "FATURAS - DIVERGÊNCIA QUANTO A ITENS FATURADOS",
-    ),
-    (
-        "0814518-06.2023.8.19.0210",
-        "700000",
-        "0",
-        "Procedente",
-        "Milena Angélica Drumond Morais Diz",
-        "2",
-        "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA",
-    ),
-    (
-        "0838692-64.2023.8.19.0021",
-        "500000",
-        "0",
-        "Procedente em Parte",
-        "Danilo Nunes Cronemberger Miranda",
-        "",
-        "FATURAS - AUMENTO DE CONSUMO",
-    ),
-    (
-        "0847140-89.2024.8.19.0021",
-        "000",
-        "0",
-        "Improcedente",
-        "Maria Daniella Binato de Castro",
-        "",
-        "Cobrança - Negativação SERASA/SPC",
-    ),
-    (
-        "0912020-19.2025.8.19.0001",
-        "000",
-        "0",
-        "Improcedente",
-        "Luiz Antonio Valiera do Nascimento",
-        "",
-        "FATURAS",
-    ),
-    (
-        "0015204-50.2022.8.19.0021",
-        "000",
-        "994080",
-        "Procedente em Parte",
-        "Não identificado",
-        "",
-        "COBRANÇA POR IRREGULARIDADE",
-    ),
-    (
-        "0017815-73.2022.8.19.0021",
-        "500000",
-        "153982",
-        "Procedente",
-        "Não identificado",
-        "",
-        "COBRANÇA POR IRREGULARIDADE",
-    ),
-    (
-        "0805011-35.2025.8.19.0021",
-        "400000",
-        "0",
-        "Procedente em Parte",
-        "Carolina Saud Coutinho",
-        "7",
-        "Interrupção n o fornecimento de energia elétrica",
-    ),
-    (
-        "0806471-28.2023.8.19.0021",
-        "000",
-        "0",
-        "Extinção sem julgamento de Mérito",
-        "Isabela Pinheiro Guimarães",
-        "",
-        "FATURAS - AUMENTO DE CONSUMO",
-    ),
-    (
-        "0816562-42.2025.8.19.0205",
-        "000",
-        "0",
-        "Improcedente",
-        "Não identificado",
-        "",
-        "COBRANÇA - NEGATIVAÇÃO",
-    ),
-    (
-        "0961876-20.2023.8.19.0001",
-        "000",
-        "0",
-        "Improcedente",
-        "Não identificado",
-        "",
-        "FATURAS - DIVERGÊNCIA QUANTO A ITENS FATURADOS",
-    ),
-    (
-        "0819221-92.2023.8.19.0205",
-        "1000000",
-        "0",
-        "Procedente em Parte",
-        "Eric Baracho Dore Fernandes",
-        "",
-        "CADASTRO - ENCERRAMENTO DE CONTRATO",
-    ),
-    (
-        "0830183-77.2023.8.19.0205",
-        "1000000",
-        "0",
-        "Procedente em Parte",
-        "Eric Baracho Dore Fernandes",
-        "",
-        "FATURAS - AUMENTO DE CONSUMO",
-    ),
-    (
-        "0833582-17.2023.8.19.0205",
-        "000",
-        "0",
-        "Improcedente",
-        "Eric Baracho Dore Fernandes",
-        "",
-        "Cobrança – Protesto",
-    ),
-    (
-        "0840942-36.2024.8.19.0021",
-        "000",
-        "0",
-        "Procedente em Parte",
-        "Maria Daniella Binato de Castro",
-        "",
-        "FATURAS - AUMENTO DE CONSUMO",
-    ),
-    (
-        "0841831-54.2023.8.19.0205",
-        "1000000",
-        "960000",
-        "Procedente em Parte",
-        "Eric Baracho Dore Fernandes",
-        "6",
-        "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA",
-    ),
-    (
-        "0001797-67.2021.8.19.0067",
-        "000",
-        "0",
-        "Improcedente",
-        "Não identificado",
-        "",
-        "FATURAS - AUMENTO DE CONSUMO",
-    ),
-    (
-        "0004756-57.2018.8.19.0021",
-        "400000",
-        "93940",
-        "Procedente em Parte",
-        "Não identificado",
-        "",
-        "COBRANÇA POR IRREGULARIDADE",
-    ),
-    (
-        "0058377-03.2017.8.19.0021",
-        "1000000",
-        "0",
-        "Procedente",
-        "Não identificado",
-        "",
-        "COBRANÇA POR IRREGULARIDADE",
-    ),
+    # --- 01 | 0004541-42.2022.8.19.0021 — Belmiro Fontoura Ferreira Gonçalves
+    ("0004541-42.2022.8.19.0021", "500000", "0", "Procedente",
+     "Belmiro Fontoura Ferreira Gonçalves", "", "Sentença - Procedente em Parte",
+     "COBRANÇA POR IRREGULARIDADE"),
+    # --- 02 | 0016262-82.2018.8.19.0036 — Leandro Loyola de Abreu
+    ("0016262-82.2018.8.19.0036", "000", "0", "Improcedente",
+     "Leandro Loyola de Abreu", "", "Sentença - Improcedente",
+     "FATURAS - ERRO DE LEITURA"),
+    # --- 03 | 0077601-53.2019.8.19.0021 — sem identificação de juiz
+    ("0077601-53.2019.8.19.0021", "500000", "0", "Procedente",
+     "Não identificado", "", "Sentença - Procedente em Parte",
+     "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA"),
+    # --- 04 | 0081943-31.2023.8.19.0001 — Leandro Loyola de Abreu (34h → sem dias explícitos)
+    ("0081943-31.2023.8.19.0001", "300000", "0", "Procedente",
+     "Leandro Loyola de Abreu", "", "Sentença - Procedente em Parte",
+     "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA"),
+    # --- 05 | 0800517-98.2023.8.19.0021 — Livia Bechara de Castro
+    ("0800517-98.2023.8.19.0021", "800000", "0", "Procedente",
+     "Livia Bechara de Castro", "", "Sentença - Procedente em Parte",
+     "Telemeditação – Corte/Suspensão"),
+    # --- 06 | 0808060-44.2022.8.19.0036 — Priscila Abreu David
+    ("0808060-44.2022.8.19.0036", "000", "0", "Improcedente",
+     "Priscila Abreu David", "", "Sentença - Improcedente",
+     "FATURAS - AUMENTO DE CONSUMO"),
+    # --- 07 | 0810220-15.2025.8.19.0205 — sem corpo de sentença (apenas dispositivo)
+    ("0810220-15.2025.8.19.0205", "000", "0", "Improcedente",
+     "Não identificado", "", "Sentença - Improcedente",
+     "RELIGAÇÃO"),
+    # --- 08 | 0815003-25.2022.8.19.0021 — Mirian Aninger Murad
+    ("0815003-25.2022.8.19.0021", "000", "0", "Improcedente",
+     "Mirian Aninger Murad", "", "Sentença - Improcedente",
+     "CADASTRO - ENCERRAMENTO DE CONTRATO"),
+    # --- 09 | 0821240-07.2024.8.19.0021 — Danilo Nunes Cronemberger Miranda
+    ("0821240-07.2024.8.19.0021", "600000", "0", "Procedente",
+     "Danilo Nunes Cronemberger Miranda", "", "Sentença - Procedente em Parte",
+     "FATURAS - DIVERGÊNCIA QUANTO A ITENS FATURADOS"),
+    # --- 10 | 0823127-52.2025.8.19.0001 — Luiz Claudio Silva Jardim Marinho
+    ("0823127-52.2025.8.19.0001", "400000", "0", "Procedente",
+     "Luiz Claudio Silva Jardim Marinho", "", "Sentença - Procedente em Parte",
+     "COBRANÇA - NEGATIVAÇÃO"),
+    # --- 11 | 0826509-27.2024.8.19.0021 — Danilo Nunes Cronemberger Miranda
+    ("0826509-27.2024.8.19.0021", "000", "0", "Improcedente",
+     "Danilo Nunes Cronemberger Miranda", "", "Sentença - Improcedente",
+     "CADASTRO - ENCERRAMENTO DE CONTRATO"),
+    # --- 12 | 0832194-83.2022.8.19.0021 — Maria Daniella Binato de Castro
+    ("0832194-83.2022.8.19.0021", "500000", "0", "Procedente",
+     "Maria Daniella Binato de Castro", "", "Sentença - Procedente em Parte",
+     "PRAZOS - RELIGAÇÃO"),
+    # --- 13 | 0833115-38.2023.8.19.0205 — sem corpo de sentença (apenas dispositivo)
+    ("0833115-38.2023.8.19.0205", "000", "0", "Improcedente",
+     "Não identificado", "", "Sentença - Improcedente",
+     "CADASTRO - ABERTURA DE CONTRATO"),
+    # --- 14 | 0835880-83.2022.8.19.0021 — Isabel Teresa Pinto Coelho Diniz (7 dias)
+    ("0835880-83.2022.8.19.0021", "500000", "0", "Procedente",
+     "Isabel Teresa Pinto Coelho Diniz", "7", "Sentença - Procedente em Parte",
+     "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA"),
+    # --- 15 | 0839330-97.2023.8.19.0021 — Isabel Teresa Pinto Coelho Diniz (dano material R$852,75)
+    ("0839330-97.2023.8.19.0021", "600000", "85275", "Procedente",
+     "Isabel Teresa Pinto Coelho Diniz", "", "Sentença - Procedente em Parte",
+     "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA"),
+    # --- 16 | 0919015-48.2025.8.19.0001 — Milena Angelica Drumond Morais Diz (só refaturamento)
+    ("0919015-48.2025.8.19.0001", "000", "0", "Procedente",
+     "Milena Angelica Drumond Morais Diz", "", "Sentença - Procedente em Parte",
+     "FATURAS"),
+    # --- 17 | 0961986-19.2023.8.19.0001 — Marcia Regina Sales Cardoso de Oliveira
+    ("0961986-19.2023.8.19.0001", "700000", "0", "Procedente",
+     "Marcia Regina Sales Cardoso de Oliveira", "", "Sentença - Procedente em Parte",
+     "FATURAS - AUMENTO DE CONSUMO"),
+    # --- 18 | 0006722-05.2021.8.19.0036 — extinção por óbito (sem juiz identificado)
+    ("0006722-05.2021.8.19.0036", "000", "0", "Extinto S/ Julg. Mérito – Demais Hipóteses",
+     "Não identificado", "", "Sentença - Extinção sem julgamento de Mérito",
+     "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA"),
+    # --- 19 | 0011112-30.2020.8.19.0205 — ATENÇÃO: conteúdo é julgamento de embargos de declaração (art.1022 CPC), não sentença original
+    ("0011112-30.2020.8.19.0205", "000", "0", "Improcedente",
+     "Não identificado", "", "Sentença - Improcedente",
+     "FATURAS - DIVERGÊNCIA QUANTO A ITENS FATURADOS"),
+    # --- 20 | 0018053-63.2020.8.19.0021 — extinção por óbito
+    ("0018053-63.2020.8.19.0021", "000", "0", "Extinto S/ Julg. Mérito – Demais Hipóteses",
+     "Não identificado", "", "Sentença - Extinção sem julgamento de Mérito",
+     "FATURAS - AUMENTO DE CONSUMO"),
+    # --- 21 | 0055582-53.2019.8.19.0021 — ATENÇÃO: apenas ato de reenvio à publicação; conteúdo da sentença indisponível no DJe
+    ("0055582-53.2019.8.19.0021", "000", "0", "Procedente",
+     "Não identificado", "", "Sentença - Procedente em Parte",
+     "COBRANÇA POR IRREGULARIDADE"),
+    # --- 22 | 0142306-47.2024.8.19.0001 — sem juiz identificado no DJe
+    ("0142306-47.2024.8.19.0001", "000", "0", "Improcedente",
+     "Não identificado", "", "Sentença - Improcedente",
+     "SUSPENSÃO INDEVIDA"),
+    # --- 23 | 0807356-09.2022.8.19.0205 — extinção (sem julgamento de mérito)
+    ("0807356-09.2022.8.19.0205", "000", "0", "Extinto S/ Julg. Mérito – Demais Hipóteses",
+     "Não identificado", "", "Sentença - Extinção sem julgamento de Mérito",
+     "FATURAS - AUMENTO DE CONSUMO"),
+    # --- 24 | 0807648-87.2023.8.19.0001 — Sandro Lucio Barbosa Pitassi
+    ("0807648-87.2023.8.19.0001", "500000", "0", "Procedente",
+     "Sandro Lucio Barbosa Pitassi", "", "Sentença - Procedente em Parte",
+     "FATURAS - AUMENTO DE CONSUMO"),
+    # --- 25 | 0815856-93.2024.8.19.0205 — Pedro Antonio de Oliveira Junior (7 dias: 21/03 a 28/03)
+    ("0815856-93.2024.8.19.0205", "500000", "0", "Procedente",
+     "Pedro Antonio de Oliveira Junior", "7", "Sentença - Procedente em Parte",
+     "INTERRUPÇÃO DO FORNECIMENTO DE ENERGIA ELÉTRICA"),
+    # --- 26 | 0818783-32.2024.8.19.0205 — Telmira de Barros Mondego (sem dano moral)
+    ("0818783-32.2024.8.19.0205", "000", "0", "Procedente",
+     "Telmira de Barros Mondego", "", "Sentença - Procedente em Parte",
+     "FATURAS - AUMENTO DE CONSUMO"),
+    # --- 27 | 0827540-15.2024.8.19.0205 — Fabelisa Gomes Leal (refaturamento extinto; dano moral R$2.000)
+    ("0827540-15.2024.8.19.0205", "200000", "0", "Procedente",
+     "Fabelisa Gomes Leal", "", "Sentença - Procedente em Parte",
+     "FATURAS - AUMENTO DE CONSUMO"),
+    # --- 28 | 0836022-49.2024.8.19.0205 — extinção por óbito — Fabelisa Gomes Leal
+    ("0836022-49.2024.8.19.0205", "000", "0", "Extinto S/ Julg. Mérito – Demais Hipóteses",
+     "Fabelisa Gomes Leal", "", "Sentença - Extinção sem julgamento de Mérito",
+     "Suspensão indevida"),
+    # --- 29 | 0841831-20.2024.8.19.0205 — Roberta dos Santos Braga
+    ("0841831-20.2024.8.19.0205", "500000", "0", "Procedente",
+     "Roberta dos Santos Braga", "", "Sentença - Procedente em Parte",
+     "Cobrança - Negativação SERASA/SPC"),
+    # --- 30 | 0843236-95.2023.8.19.0021 — Belmiro Fontoura Ferreira Gonçalves (só declaratório; sem DM)
+    ("0843236-95.2023.8.19.0021", "000", "0", "Procedente",
+     "Belmiro Fontoura Ferreira Gonçalves", "", "Sentença - Procedente em Parte",
+     "COBRANÇA POR IRREGULARIDADE"),
+    # --- 31 | 0848611-74.2022.8.19.0001 — Marcia Regina Sales Cardoso de Oliveira (DM improcedente)
+    ("0848611-74.2022.8.19.0001", "000", "0", "Procedente",
+     "Marcia Regina Sales Cardoso de Oliveira", "", "Sentença - Procedente em Parte",
+     "COBRANÇA POR IRREGULARIDADE"),
+    # --- 32 | 0856823-53.2024.8.19.0021 — Monalisa Renata Artifon
+    ("0856823-53.2024.8.19.0021", "500000", "0", "Procedente",
+     "Monalisa Renata Artifon", "", "Sentença - Procedente em Parte",
+     "FATURAS - AUMENTO DE CONSUMO"),
 ]
 
 
@@ -267,11 +190,11 @@ def gravar_excel():
     ws.row_dimensions[1].height = 40
 
     # Dados
-    for row_i, (cnj, dm, dmat, sit, juiz, dias, materia) in enumerate(DADOS, 2):
+    for row_i, (cnj, dm, dmat, sit, juiz, dias, fase, materia) in enumerate(DADOS, 2):
         fundo = COR_CINZA if row_i % 2 == 0 else COR_BRANCO
         valores = [
             cnj,
-            "Sentença/Acórdão",
+            fase,
             dm,
             dmat,
             sit,
